@@ -19,10 +19,7 @@ if [[ "$curpass" != "$newpass" ]]; then
   fi
 fi
 
-region=`zenity --list --column='Выберите тип региона': euro1 euro2`
+region=`zenity --list --column='Выберите тип региона': euro1 euro2 de us1 us2 ca`
 connection_type=`zenity --list --column='Выберите тип соединения:' tcp443 udp25000 tcp80 udp53`
-
-echo "$connection_type"
-echo "$region"
 
 xterm -e sudo openvpn --script-security 2 --config "./$region/vpnbook-$region-$connection_type.ovpn" --auth-user-pass "$passfile"
